@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../../models/IUser";
+import { IUser } from "../../../models/IUser";
 
-interface AuthState {
+interface RegistrationState {
   user: IUser;
   loading?: boolean;
   error?: string;
 }
 
-const initialState: AuthState = {
+const initialState: RegistrationState = {
   user: {},
   loading: false,
   error: "",
 };
 
-export const AuthSlice = createSlice({
-  name: "auth",
+export const RegistrationSlice = createSlice({
+  name: "registration",
   initialState,
   reducers: {
     initApp: (_, action) => {
@@ -27,5 +27,5 @@ export const AuthSlice = createSlice({
   extraReducers: {},
 });
 
-export const { initApp } = AuthSlice.actions;
-export default AuthSlice.reducer;
+export const { initApp } = RegistrationSlice.actions;
+export default RegistrationSlice.reducer;

@@ -1,13 +1,27 @@
 import App from "../App";
 
-import { createBrowserRouter, Outlet } from "react-router-dom";
-import AuthPage from "../pages/AuthPage/AuthPage";
-import AdminPage from "../pages/AdminPage/AdminPage";
+import { createBrowserRouter } from "react-router-dom";
+import AuthPage from "../containers/AuthPage/AuthPage";
+import AdminPage from "../containers/AdminPage/AdminPage";
+import LoginPage from "../containers/LoginPage/LoginPage";
+import RegistrationPage from "../containers/RegistrationPage/RegistrationPage";
 
 export const routes = [
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "auth",
+    element: <AuthPage />,
+  },
+  {
+    path: "auth/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "auth/registration",
+    element: <RegistrationPage />,
   },
   {
     path: "auth",

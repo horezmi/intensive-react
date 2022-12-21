@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authReducer from "./reducers/AuthSlice";
+import registrationReducer from "../containers/RegistrationPage/store/slice";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
 import saga from "./saga";
 
 const rootReducer = combineReducers({
-  authReducer,
+  registrationReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
