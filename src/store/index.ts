@@ -1,4 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 import registrationReducer from "../containers/RegistrationPage/store/slice";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
@@ -10,11 +14,16 @@ const rootReducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware();
 
+const middleware = [
+  ...getDefaultMiddleware({ thunk: false }),
+  sagaMiddleware,
+  logger,
+];
+
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(sagaMiddleware, logger),
+    middleware,
   });
 };
 

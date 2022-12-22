@@ -17,15 +17,19 @@ export const RegistrationSlice = createSlice({
   name: "registration",
   initialState,
   reducers: {
+    initAppLoading: (state, action) => {
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    },
     initApp: (_, action) => {
-      console.log("initApp");
       return {
         user: action.payload,
       };
     },
   },
-  extraReducers: {},
 });
 
-export const { initApp } = RegistrationSlice.actions;
+export const { initApp, initAppLoading } = RegistrationSlice.actions;
 export default RegistrationSlice.reducer;

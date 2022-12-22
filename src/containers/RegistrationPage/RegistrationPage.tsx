@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useAppDispatch } from "../../store/hooks/redux";
-import { initApp } from "./store/slice";
+import { registrationPageSagaActions } from "./store/saga";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,16 +21,14 @@ const RegistrationPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("useEffect");
-    dispatch({ type: initApp.type });
+    dispatch({ type: registrationPageSagaActions.INIT_APP_SAGA });
   }, []);
 
   const handleSubmit = (event: any) => {
-    // TODO action to api
-    console.log(event);
     if (event) {
       navigate("/admin");
     }
+    dispatch({ type: registrationPageSagaActions.INIT_APP_SAGA });
   };
 
   return (
