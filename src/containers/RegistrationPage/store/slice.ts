@@ -18,15 +18,10 @@ export const RegistrationSlice = createSlice({
   initialState,
   reducers: {
     initAppLoading: (state, action) => {
-      return {
-        ...state,
-        loading: action.payload,
-      };
+      state.loading = action.payload;
     },
-    initApp: (_, action) => {
-      return {
-        user: action.payload,
-      };
+    initApp: (state, action) => {
+      state.user = action.payload;
     },
   },
 });

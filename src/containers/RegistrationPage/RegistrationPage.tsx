@@ -20,10 +20,6 @@ const RegistrationPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch({ type: registrationPageSagaActions.INIT_APP_SAGA });
-  }, []);
-
   const handleSubmit = (event: any) => {
     if (event) {
       navigate("/admin");

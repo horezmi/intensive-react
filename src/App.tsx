@@ -2,7 +2,6 @@ import "./App.scss";
 import { NavLink } from "react-router-dom";
 
 const App = () => {
-  console.log("app");
   return (
     <div>
       <nav>
