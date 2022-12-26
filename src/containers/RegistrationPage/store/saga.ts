@@ -1,24 +1,30 @@
-import { put, takeEvery } from "redux-saga/effects";
-import { initApp, initAppLoading } from "./slice";
+import { call, put, takeEvery } from "redux-saga/effects";
+import { fbAPi, ILoginUserData } from "../../../services/fbApi";
+import { signUp, signUpLoading } from "./slice";
 
-export const registrationPageSagaActions = {
-  INIT_APP_SAGA: "INIT_APP_SAGA",
-};
+export enum ERegistrationPageSagaActions {
+  SIGN_UP_SAGA = "SIGN_UP_SAGA",
+  SIGN_IN_SAGA = "SIGN_UP_SAGA",
+}
 
-export function* initAppSaga() {
+interface ISignUpSagaAction {
+  type: ERegistrationPageSagaActions.SIGN_UP_SAGA;
+  payload: ILoginUserData;
+}
+
+export function* signUpSaga(action: ISignUpSagaAction) {
   try {
-    yield put(initAppLoading(true));
-    const user = { name: "Peter" };
-    const result = true;
-    if (result) {
-      yield put(initApp(user));
-      yield put(initAppLoading(false));
-    }
+    yield put(signUpLoading(true));
+
+    yield call(fbAPi.signUp, action.payload);
+
+    yield put(signUp(action.payload));
+    yield put(signUpLoading(false));
   } catch (e) {
     console.log(e);
   }
 }
 
 export default function* registrationPageSaga() {
-  yield takeEvery(registrationPageSagaActions.INIT_APP_SAGA, initAppSaga);
+  yield takeEvery(ERegistrationPageSagaActions.SIGN_UP_SAGA, signUpSaga);
 }

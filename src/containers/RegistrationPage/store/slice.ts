@@ -1,30 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../../../models/IUser";
+import { ILoginUserData } from "../../../services/fbApi";
+// import { IUser } from "../../../models/IUser";
 
-interface RegistrationState {
-  user: IUser;
+export interface RegistrationPageState {
+  user: ILoginUserData;
   loading?: boolean;
   error?: string;
 }
 
-const initialState: RegistrationState = {
-  user: {},
+const initialState: RegistrationPageState = {
+  user: { email: "", password: "" },
   loading: false,
   error: "",
 };
 
-export const RegistrationSlice = createSlice({
-  name: "registration",
+export const RegistrationPageSlice = createSlice({
+  name: "RegistrationPage",
   initialState,
   reducers: {
-    initAppLoading: (state, action) => {
+    signUpLoading: (state, action) => {
       state.loading = action.payload;
     },
-    initApp: (state, action) => {
+    signUp: (state, action) => {
       state.user = action.payload;
     },
   },
 });
 
-export const { initApp, initAppLoading } = RegistrationSlice.actions;
-export default RegistrationSlice.reducer;
+export const { signUp, signUpLoading } = RegistrationPageSlice.actions;
+export default RegistrationPageSlice.reducer;

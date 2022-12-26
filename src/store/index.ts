@@ -3,13 +3,13 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
-import registrationReducer from "../containers/RegistrationPage/store/slice";
+import registrationPageReducer from "../containers/RegistrationPage/store/slice";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
 import saga from "./saga";
 
 const rootReducer = combineReducers({
-  registrationReducer,
+  registrationPageReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
