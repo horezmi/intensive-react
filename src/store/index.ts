@@ -3,16 +3,15 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
-import registrationReducer from "../containers/RegistrationPage/store/slice";
+import registrationPageReducer from "../containers/RegistrationPage/store/slice";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
-import saga from "./saga";
 
 const rootReducer = combineReducers({
-  registrationReducer,
+  registrationPageReducer,
 });
 
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [
   ...getDefaultMiddleware({ thunk: false }),
@@ -26,10 +25,6 @@ export const setupStore = () => {
     middleware,
   });
 };
-
-export default setupStore();
-
-sagaMiddleware.run(saga);
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;

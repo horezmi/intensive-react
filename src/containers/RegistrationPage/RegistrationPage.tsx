@@ -1,9 +1,9 @@
 import { Formik, Form, Field } from "formik";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useAppDispatch } from "../../store/hooks/redux";
-import { registrationPageSagaActions } from "./store/saga";
+import { ILoginUserData } from "../../services/fbApi";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
+import { ERegistrationPageSagaActions } from "./store/saga";
+import { registratioPagenSelector } from "./store/selectors";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,15 +17,19 @@ const SignupSchema = Yup.object().shape({
 });
 
 const RegistrationPage = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { user, loading, error } = useAppSelector(registratioPagenSelector);
 
-  const handleSubmit = (event: any) => {
-    if (event) {
-      navigate("/admin");
-    }
-    dispatch({ type: registrationPageSagaActions.INIT_APP_SAGA });
+  const handleSubmit = (event: ILoginUserData) => {
+    dispatch({
+      type: ERegistrationPageSagaActions.SIGN_UP_SAGA,
+      payload: event,
+    });
   };
+
+  if (user.email) {
+    return <h1>Вы зарегистрированы</h1>;
+  }
 
   return (
     <div>

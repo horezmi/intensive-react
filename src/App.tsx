@@ -1,21 +1,8 @@
 import "./App.scss";
-import { NavLink } from "react-router-dom";
+import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/auth">auth</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin">admin</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
+  return <HomePage />;
 };
 
 export default App;
