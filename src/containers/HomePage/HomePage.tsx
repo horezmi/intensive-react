@@ -1,20 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { lsApi } from "../../services/lsApi";
+import DashbordPage from "../DashbordPage/DashbordPage";
+import AuthPage from "../AuthPage/AuthPage";
 
 const HomePage = () => {
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/auth">auth</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin">admin</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
+  const token = lsApi.getToken();
+
+  if (!token) {
+    return <AuthPage />;
+  }
+
+  return <DashbordPage />;
 };
 
 export default HomePage;

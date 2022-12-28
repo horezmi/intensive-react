@@ -2,7 +2,7 @@ import App from "../App";
 
 import { createBrowserRouter } from "react-router-dom";
 import AuthPage from "../containers/AuthPage/AuthPage";
-import AdminPage from "../containers/AdminPage/AdminPage";
+import DashbordPage from "../containers/DashbordPage/DashbordPage";
 import LoginPage from "../containers/LoginPage/LoginPage";
 import RegistrationPage from "../containers/RegistrationPage/RegistrationPage";
 
@@ -28,8 +28,8 @@ export const routes = [
     element: <AuthPage />,
   },
   {
-    path: "admin",
-    element: <AdminPage />,
+    path: "dashbord",
+    element: <DashbordPage />,
   },
 ];
 

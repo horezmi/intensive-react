@@ -1,6 +1,4 @@
-import { lsApi } from "../../services/lsApi";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
-import { registrationPageSelector } from "../RegistrationPage/store/selectors";
+import { useAppDispatch } from "../../store/hooks/redux";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ILoginUserData } from "../../services/fbApi";
@@ -17,8 +15,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 const LoginPage = () => {
-  const { user } = useAppSelector(registrationPageSelector);
-  const token = lsApi.getToken();
   const dispatch = useAppDispatch();
 
   const handleSubmit = (event: ILoginUserData) => {
@@ -28,13 +24,6 @@ const LoginPage = () => {
     });
   };
 
-  // if (token)
-  //   return (
-  //     <>
-  //       <h2>Welcome</h2>
-  //       <h3>{user.email}</h3>
-  //     </>
-  //   );
   return (
     <div>
       <h1>Login Page</h1>

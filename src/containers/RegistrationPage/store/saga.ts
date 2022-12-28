@@ -23,8 +23,10 @@ type IUserCredential = UserCredential & {
 export function* signUpSaga(action: ISignUpSagaAction) {
   try {
     yield put(signUpLoading(true));
+
     const { user }: IUserCredential = yield call(fbAPi.signUp, action.payload);
     lsApi.setToken(user.accessToken);
+
     yield put(
       signUp({
         email: user.email,
@@ -33,6 +35,7 @@ export function* signUpSaga(action: ISignUpSagaAction) {
         name: "TestUser",
       })
     );
+
     yield put(signUpLoading(false));
   } catch (e) {
     console.log(e);
