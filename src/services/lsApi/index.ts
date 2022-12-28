@@ -2,7 +2,7 @@ enum ELSKeys {
   TOKEN = "TOKEN",
 }
 
-const setToken = (token: ELSKeys.TOKEN) => {
+const setToken = (token: ELSKeys.TOKEN | string) => {
   localStorage.setItem(ELSKeys.TOKEN, token);
 };
 

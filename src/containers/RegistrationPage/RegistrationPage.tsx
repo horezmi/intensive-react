@@ -1,9 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ILoginUserData } from "../../services/fbApi";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
+import { useAppDispatch } from "../../store/hooks/redux";
 import { ERegistrationPageSagaActions } from "./store/saga";
-import { registratioPagenSelector } from "./store/selectors";
+import { lsApi } from "../../services/lsApi";
+import { useNavigate } from "react-router-dom";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,16 +19,19 @@ const SignupSchema = Yup.object().shape({
 
 const RegistrationPage = () => {
   const dispatch = useAppDispatch();
-  const { user, loading, error } = useAppSelector(registratioPagenSelector);
+  const token = lsApi.getToken();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: ILoginUserData) => {
     dispatch({
       type: ERegistrationPageSagaActions.SIGN_UP_SAGA,
       payload: event,
     });
+
+    navigate("/");
   };
 
-  if (user.email) {
+  if (token) {
     return <h1>Вы зарегистрированы</h1>;
   }
 

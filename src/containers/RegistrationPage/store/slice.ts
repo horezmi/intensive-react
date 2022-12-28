@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ILoginUserData } from "../../../services/fbApi";
-// import { IUser } from "../../../models/IUser";
+import { IUser } from "../../../models/IUser";
 
 export interface RegistrationPageState {
-  user: ILoginUserData;
+  user: IUser;
   loading?: boolean;
   error?: string;
 }
 
 const initialState: RegistrationPageState = {
-  user: { email: "", password: "" },
+  user: { email: "", displayName: "", name: "", uid: "" },
   loading: false,
   error: "",
 };
