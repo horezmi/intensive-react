@@ -1,6 +1,6 @@
 import { all, fork } from "redux-saga/effects";
-import registrationPageSaga from "../../containers/RegistrationPage/store/saga";
+import authPageSaga from "../../containers/AuthPage/store/saga";
 
 export default function* rootSaga() {
-  yield all([fork(registrationPageSaga)]);
+  yield all([fork(authPageSaga)]);
 }

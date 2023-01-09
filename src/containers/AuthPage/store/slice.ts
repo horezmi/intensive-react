@@ -1,30 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../../../models/IUser";
 
-export interface RegistrationPageState {
+export interface AuthPageState {
   user: IUser;
   loading?: boolean;
   error?: string;
 }
 
-const initialState: RegistrationPageState = {
+const initialState: AuthPageState = {
   user: { email: "", displayName: "", name: "", uid: "" },
   loading: false,
   error: "",
 };
 
-export const RegistrationPageSlice = createSlice({
-  name: "RegistrationPage",
+export const AuthPageSlice = createSlice({
+  name: "AuthPage",
   initialState,
   reducers: {
-    signUpLoading: (state, action) => {
+    authLoading: (state, action) => {
       state.loading = action.payload;
     },
-    signUp: (state, action) => {
+    auth: (state, action) => {
       state.user = action.payload;
     },
   },
 });
 
-export const { signUp, signUpLoading } = RegistrationPageSlice.actions;
-export default RegistrationPageSlice.reducer;
+export const { authLoading, auth } = AuthPageSlice.actions;
+export default AuthPageSlice.reducer;

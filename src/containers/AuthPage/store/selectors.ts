@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../../store";
 
 const selectSelf = (state: RootState) => state;
-export const registrationPageSelector = createSelector(
+export const loginPageSelector = createSelector(
   selectSelf,
-  (state) => state.registrationPageReducer
+  (state) => state.authPageReducer
 );
